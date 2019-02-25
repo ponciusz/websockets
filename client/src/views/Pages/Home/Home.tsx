@@ -36,7 +36,7 @@ class Home extends Component<any, any> {
           <Chat />
           <button
             onClick={() => {
-              this.props.actionSendMessage(Date.now());
+              this.sendMessage(Date.now());
             }}
           >
             SAY SOMETHING
