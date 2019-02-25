@@ -34,13 +34,6 @@ class Home extends Component<any, any> {
       <Flex>
         <Box width={1}>
           <Chat />
-          <button
-            onClick={() => {
-              this.sendMessage(Date.now());
-            }}
-          >
-            SAY SOMETHING
-          </button>
         </Box>
         <Sidebar />
       </Flex>
