@@ -3,6 +3,7 @@ import socketConnection from '../../../socket';
 import store from 'store2';
 import { connect } from 'react-redux';
 import { actionSendMessage } from '../../../reducers/globalChat';
+import Sidebar from '../../../components/Sidebar/Sidebar';
 
 import './Home.css';
 class Home extends Component<any, any> {
@@ -27,7 +28,7 @@ class Home extends Component<any, any> {
     }
     return (
       <div>
-        BOARD
+        <Sidebar />
         <button
           onClick={() => {
             this.props.actionSendMessage(Date.now());
