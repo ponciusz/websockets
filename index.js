@@ -2,10 +2,6 @@ var app = require("express")();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 
-// app.get("/", function(req, res) {
-//   res.sendFile(__dirname + "/index.html");
-// });
-
 let activeUsers = {};
 
 const showActiveUsers = () => {
@@ -15,14 +11,15 @@ const showActiveUsers = () => {
 };
 
 io.on("connection", function(socket) {
+  console.log(socket.handshake);
+
   activeUsers[socket.id] = "Unnknown";
   showActiveUsers();
 
-  socket.on("chat message", function(data) {
-    console.log("message: " + data.message);
-    const diff = Date.now() - data.time;
-    console.log(`Ping: ${diff}ms`);
-    io.emit("chat message", data.message);
+  socket.on("SEND_MESSAGE", function(data) {
+    console.log("message: " + data);
+
+    // io.emit("chat message", data.message);
   });
 
   socket.on("user joined", function(name) {
