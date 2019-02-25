@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import store from 'store2';
-
+import { Flex, Box } from '@rebass/grid';
+import Wrapper from './Login.styles';
 interface LoginProps {
   history: any;
 }
@@ -22,13 +23,19 @@ const Login: React.FC<LoginProps> = props => {
   };
 
   return (
-    <div className="App">
-      <ul id="messages" />
-      <form onSubmit={send}>
-        <input value={nameField} onChange={e => updateInput(e)} />
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    <Flex>
+      <Box m="auto" width={1 / 3} px={2}>
+        <Wrapper>
+          <div>
+            <h3>Welcome back!</h3>
+            <form onSubmit={send}>
+              <input value={nameField} onChange={e => updateInput(e)} />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </Wrapper>
+      </Box>
+    </Flex>
   );
 };
 
