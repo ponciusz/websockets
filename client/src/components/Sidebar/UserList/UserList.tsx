@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import { Flex, Box } from '@rebass/grid';
 import Styled from './UserList.styles';
+import { connect } from 'react-redux';
 
-const users = ['User1', 'User2', 'User3', 'User4'];
-class UserList extends Component {
+class UserList extends Component<any, any> {
   constructor(props) {
     super(props);
   }
   renderUsers() {
-    return users.map((user, index) => {
-      return <li key={index}>{user}</li>;
-    });
+    const { online } = this.props.onlineUsersReducer;
+    if (Object.keys(online)) {
+      return Object.keys(online).map((id: any, index) => {
+        return <li key={index}>{online[id].name}</li>;
+      });
+    }
   }
 
   render() {
@@ -21,7 +24,6 @@ class UserList extends Component {
             <Flex className="section-title">
               <Styled.UserListTitle>Users</Styled.UserListTitle>
             </Flex>
-
             <Styled.UserList>{this.renderUsers()}</Styled.UserList>
           </Box>
         </Flex>
@@ -30,4 +32,18 @@ class UserList extends Component {
   }
 }
 
-export default UserList;
+// CONNECT PROPS AND DISPATCHERS
+const mapStateToProps = state => {
+  return {
+    onlineUsersReducer: state.onlineUsersReducer,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserList);
