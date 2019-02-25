@@ -19,7 +19,7 @@ class RoomList extends Component {
   renderRooms() {
     return rooms.map((room, index) => {
       return (
-        <li>
+        <li key={index}>
           {room}
           <span>Join</span>
         </li>
