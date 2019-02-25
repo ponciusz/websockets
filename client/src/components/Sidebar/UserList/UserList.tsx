@@ -9,7 +9,7 @@ class UserList extends Component {
   }
   renderUsers() {
     return users.map((user, index) => {
-      return <li>{user}</li>;
+      return <li key={index}>{user}</li>;
     });
   }
 
