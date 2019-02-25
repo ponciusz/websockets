@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
-import socketConnection from '../../../socket';
+import { emit } from '../../../actions/websockets';
 import store from 'store2';
 import { connect } from 'react-redux';
-import { actionSendMessage } from '../../../reducers/globalChat';
+
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import Chat from '../../../components/Chat/Chat';
 import { Flex, Box } from '@rebass/grid';
 
 import './Home.css';
+
 class Home extends Component<any, any> {
   componentDidMount() {
-    // socket.connect();
-    console.log('HOME DID MOUNT');
     const userFromLocalStorage = store('user');
-    socketConnection.emit('user joined', userFromLocalStorage.name);
-    // socket.emit('chat message', {
-    //   time: Date.now(),
-    //   message: `${userFromLocalStorage.name} is connected`,
-    // });
+    // emit('USER_JOINED', userFromLocalStorage.name);
   }
 
   chatBoard = () => {
-    console.log(this.props.globalChatReducer.board);
+    return this.props.globalChatReducer.board.map((msg, index) => {
+      return <li key={index}>{msg}</li>;
+    });
+  };
+
+  sendMessage = message => {
+    const userFromLocalStorage = store('user');
+    emit('SEND_MESSAGE', message + ' - ' + userFromLocalStorage.name);
   };
 
   render() {
@@ -34,7 +36,7 @@ class Home extends Component<any, any> {
           <Chat />
           <button
             onClick={() => {
-              this.props.actionSendMessage(Date.now());
+              this.sendMessage(Date.now());
             }}
           >
             SAY SOMETHING
@@ -54,9 +56,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {
-    actionSendMessage: message => dispatch(actionSendMessage(message)),
-  };
+  return {};
 };
 
 export default connect(

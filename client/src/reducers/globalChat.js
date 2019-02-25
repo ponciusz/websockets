@@ -1,7 +1,9 @@
 import { createReducer, createAction } from 'redux-starter-kit';
-import socketConnection from '../socket';
+
+import { emit } from '../actions/websockets';
 
 export const actionSendMessage = createAction('SEND_MESSAGE');
+export const actionUserJoined = createAction('USER_JOINED');
 
 const initialState = {
   board: [],
@@ -9,9 +11,15 @@ const initialState = {
 
 const globalChatReducer = createReducer(initialState, {
   [actionSendMessage]: (state, action) => {
-    console.log(action);
-    socketConnection.emit('SEND_MESSAGE', action.payload);
+    console.log('actionSendMessage');
+
     state.board.push(action.payload);
+    return state;
+  },
+  [actionUserJoined]: (state, action) => {
+    console.log('actionUserJoined');
+
+    // state.board.push(action.payload);
     return state;
   },
 });

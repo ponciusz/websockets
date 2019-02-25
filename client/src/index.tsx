@@ -7,7 +7,9 @@ import App from './components/App';
 import store from './store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { init } from './actions/websockets';
 
+init(store);
 ReactDOM.render(
   <Provider store={store}>
     <App />
