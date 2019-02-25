@@ -4,6 +4,8 @@ import store from 'store2';
 import { connect } from 'react-redux';
 import { actionSendMessage } from '../../../reducers/globalChat';
 import Sidebar from '../../../components/Sidebar/Sidebar';
+import Chat from '../../../components/Chat/Chat';
+import { Flex, Box } from '@rebass/grid';
 
 import './Home.css';
 class Home extends Component<any, any> {
@@ -27,16 +29,19 @@ class Home extends Component<any, any> {
       this.chatBoard();
     }
     return (
-      <div>
+      <Flex>
+        <Box width={1}>
+          <Chat />
+          <button
+            onClick={() => {
+              this.props.actionSendMessage(Date.now());
+            }}
+          >
+            SAY SOMETHING
+          </button>
+        </Box>
         <Sidebar />
-        <button
-          onClick={() => {
-            this.props.actionSendMessage(Date.now());
-          }}
-        >
-          SAY SOMETHING
-        </button>
-      </div>
+      </Flex>
     );
   }
 }
