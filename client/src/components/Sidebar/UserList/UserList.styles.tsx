@@ -29,7 +29,7 @@ const UserListWrapper = styled.div`
   }
 `;
 const UserListTitle = styled.div`
-  background: red;
+  background: #7fdbff;
   padding: 10px;
   flex-grow: 1;
   font-weight: 600;

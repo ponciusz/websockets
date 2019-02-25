@@ -29,10 +29,15 @@ const Login: React.FC<LoginProps> = props => {
           <Styled.Title>Welcome back!</Styled.Title>
           <Box width={3 / 4} mx="auto">
             <form onSubmit={send}>
-              <Styled.Input value={nameField} onChange={e => updateInput(e)} />
-              <Styled.Input />
+              <Styled.Input
+                id="username"
+                value={nameField}
+                onChange={e => updateInput(e)}
+                placeholder="Username"
+              />
 
-              <button type="submit">Login</button>
+              <Styled.Input placeholder="Password" id="password" />
+              <Styled.FormButton type="submit">Login</Styled.FormButton>
             </form>
           </Box>
         </Box>

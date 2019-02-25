@@ -28,7 +28,7 @@ const RoomListWrapper = styled.div`
   }
 `;
 const RoomListTitle = styled.div`
-  background: red;
+  background: #7fdbff;
   padding: 10px;
   flex-grow: 1;
   font-weight: 600;
