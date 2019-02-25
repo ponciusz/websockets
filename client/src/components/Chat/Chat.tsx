@@ -17,7 +17,7 @@ const Chat = props => {
   };
 
   const chatBoard = () => {
-    return props.globalChatReducer.board.map((msg, index) => {
+    return props.globalChat.board.map((msg, index) => {
       return <li key={index}>{msg}</li>;
     });
   };
@@ -47,7 +47,7 @@ const Chat = props => {
 // CONNECT PROPS AND DISPATCHERS
 const mapStateToProps = state => {
   return {
-    globalChatReducer: state.globalChatReducer,
+    globalChat: state.globalChatReducer,
   };
 };
 

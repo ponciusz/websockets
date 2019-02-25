@@ -8,4 +8,13 @@ export const init = store => {
     socket.on(type, payload => store.dispatch({ type, payload }))
   );
 };
+
+// export const initRoom = (store, id) => {
+//   Object.keys(socketActionTypes).forEach(type =>
+//     socket.on(id + '@' + type, payload =>
+//       store.dispatch({ type: id + '@' + type, payload })
+//     )
+//   );
+// };
+
 export const emit = (type, payload) => socket.emit(type, payload);

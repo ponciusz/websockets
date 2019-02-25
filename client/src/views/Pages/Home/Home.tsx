@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import Sidebar from '../../../components/Sidebar/Sidebar';
 import Chat from '../../../components/Chat/Chat';
 import { Flex, Box } from '@rebass/grid';
-
+import { Route, Switch } from 'react-router-dom';
 import './Home.css';
+import Game from '../Game';
 
 class Home extends Component<any, any> {
   componentDidMount() {
@@ -19,6 +20,11 @@ class Home extends Component<any, any> {
     return (
       <Flex>
         <Box width={1}>
+          <div>
+            <Switch>
+              <Route path="/game/:gameID" component={Game} />
+            </Switch>
+          </div>
           <Chat />
         </Box>
         <Sidebar />

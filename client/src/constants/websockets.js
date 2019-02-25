@@ -3,6 +3,7 @@ export const socketActionTypes = [
   'SEND_MESSAGE',
   'USER_JOINED',
   'USER_LEFT',
+  'GAME_CREATED',
 ].reduce((accum, type) => {
   accum[type] = type;
   return accum;
