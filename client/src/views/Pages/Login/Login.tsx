@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import store from 'store2';
 import { Flex, Box } from '@rebass/grid';
-import Wrapper from './Login.styles';
+import Styled from './Login.styles';
 interface LoginProps {
   history: any;
 }
@@ -23,19 +23,26 @@ const Login: React.FC<LoginProps> = props => {
   };
 
   return (
-    <Flex>
-      <Box m="auto" width={1 / 3} px={2}>
-        <Wrapper>
-          <div>
-            <h3>Welcome back!</h3>
+    <Styled.Wrapper>
+      <Styled.Container>
+        <Box width={1}>
+          <Styled.Title>Welcome back!</Styled.Title>
+          <Box width={3 / 4} mx="auto">
             <form onSubmit={send}>
-              <input value={nameField} onChange={e => updateInput(e)} />
-              <button type="submit">Send</button>
+              <Styled.Input
+                id="username"
+                value={nameField}
+                onChange={e => updateInput(e)}
+                placeholder="Username"
+              />
+
+              <Styled.Input placeholder="Password" id="password" />
+              <Styled.FormButton type="submit">Login</Styled.FormButton>
             </form>
-          </div>
-        </Wrapper>
-      </Box>
-    </Flex>
+          </Box>
+        </Box>
+      </Styled.Container>
+    </Styled.Wrapper>
   );
 };
 
