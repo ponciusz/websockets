@@ -14,6 +14,8 @@ io.on("connection", function(socket) {
   activeUsers[socket.id] = "Unnknown";
   showActiveUsers();
 
+  io.to(socket.id).emit("ONLINE_USERS", activeUsers); //Send current online status after connection estabilished
+
   socket.on("SEND_MESSAGE", function(data) {
     console.log("message: " + data);
     io.emit("SEND_MESSAGE", data);
@@ -21,14 +23,19 @@ io.on("connection", function(socket) {
 
   socket.on("USER_JOINED", function(name) {
     activeUsers[socket.id] = name;
+    io.emit("USER_JOINED", {
+      id: socket.id,
+      name: name || "Unnknown"
+    });
     console.log(`${name} joined GAME!!`);
     showActiveUsers();
   });
 
   socket.on("disconnect", function() {
     delete activeUsers[socket.id];
+    io.emit("USER_LEFT", socket.id);
     showActiveUsers();
-    console.log(`${socket.id} disconnected`);
+    console.log(`${socket.id} Left`);
   });
 });
 

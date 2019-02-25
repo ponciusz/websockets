@@ -12,24 +12,10 @@ import './Home.css';
 class Home extends Component<any, any> {
   componentDidMount() {
     const userFromLocalStorage = store('user');
-    // emit('USER_JOINED', userFromLocalStorage.name);
+    emit('USER_JOINED', userFromLocalStorage.name);
   }
 
-  chatBoard = () => {
-    return this.props.globalChatReducer.board.map((msg, index) => {
-      return <li key={index}>{msg}</li>;
-    });
-  };
-
-  sendMessage = message => {
-    const userFromLocalStorage = store('user');
-    emit('SEND_MESSAGE', message + ' - ' + userFromLocalStorage.name);
-  };
-
   render() {
-    {
-      this.chatBoard();
-    }
     return (
       <Flex>
         <Box width={1}>
