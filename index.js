@@ -67,6 +67,13 @@ io.on("connection", function(socket) {
 
   io.to(socket.id).emit("ONLINE_USERS", activeUsers); //Send current online status after connection estabilished
 
+  socket.on("JOIN_ROOM", function(room) {
+    console.log(`${room} - joined`);
+    socket.join(room);
+
+    io.sockets.in(room).emit("SEND_MESSAGE", "HEllo in my room");
+  });
+
   sendMessage(socket);
 
   userJoined(socket);
