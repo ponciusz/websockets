@@ -24,7 +24,7 @@ class RoomList extends Component {
             <Box width={5 / 6}>{room}</Box>
             <Box width={1 / 6}>2/4</Box>
             <Box width={1 / 6} mx="auto">
-              <span>Join</span>
+              <button>Join</button>
             </Box>
           </Flex>
         </li>

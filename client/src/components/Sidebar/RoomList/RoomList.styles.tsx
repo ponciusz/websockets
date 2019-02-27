@@ -14,7 +14,7 @@ const UserList = styled.ul`
     div:nth-child(2) {
       text-align: center;
     }
-    div:nth-child(3) > span {
+    div:nth-child(3) > button {
       background: green;
       padding: 5px 10px;
       border-radius: 10px;
