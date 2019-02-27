@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { emit } from '../../../actions/websockets';
 import store from 'store2';
 import { connect } from 'react-redux';
-
-import Sidebar from '../../../components/Sidebar/Sidebar';
+import Game from '../../../components/Game/Game';
 import Chat from '../../../components/Chat/Chat';
-import { Flex, Box } from '@rebass/grid';
-
-import './Home.css';
+import Wrapper from './Home.styles';
 
 class Home extends Component<any, any> {
   componentDidMount() {
@@ -17,12 +14,11 @@ class Home extends Component<any, any> {
 
   render() {
     return (
-      <Flex>
-        <Box width={1}>
-          <Chat />
-        </Box>
-        <Sidebar />
-      </Flex>
+      <Wrapper>
+        <Game />
+        <Chat />
+        <button>Back</button>
+      </Wrapper>
     );
   }
 }
