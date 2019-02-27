@@ -5,8 +5,7 @@ const Wrapper = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
   /* background-image: linear-gradient(to bottom right, #6e6e6e, yellow); */
 `;
 

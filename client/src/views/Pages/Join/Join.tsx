@@ -6,7 +6,8 @@ class Join extends Component<any, any> {
   render() {
     return (
       <Wrapper>
-        <div>Join Game</div>
+        <button type="submit">Create</button>
+        <button type="submit">Join</button>
       </Wrapper>
     );
   }

@@ -20,8 +20,13 @@ class RoomList extends Component {
     return rooms.map((room, index) => {
       return (
         <li key={index}>
-          {room}
-          <span>Join</span>
+          <Flex>
+            <Box width={5 / 6}>{room}</Box>
+            <Box width={1 / 6}>2/4</Box>
+            <Box width={1 / 6} mx="auto">
+              <span>Join</span>
+            </Box>
+          </Flex>
         </li>
       );
     });
@@ -32,7 +37,11 @@ class RoomList extends Component {
         <Flex>
           <Box width={1 / 1}>
             <Styled.RoomListTitle>
-              Rooms<span>+</span>
+              <Flex>
+                <Box width={5 / 6}>Rooms</Box>
+                <Box width={1 / 6}>Players</Box>
+                <Box width={1 / 6} />
+              </Flex>
             </Styled.RoomListTitle>
             <Styled.UserList>{this.renderRooms()}</Styled.UserList>
           </Box>

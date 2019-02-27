@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { emit } from '../../../actions/websockets';
 import store from 'store2';
 import { connect } from 'react-redux';
-import Game from '../../../components/Game/Game';
-import Chat from '../../../components/Chat/Chat';
 import Wrapper from './Home.styles';
-
+import RoomList from '../../../components/Sidebar/RoomList/RoomList';
 class Home extends Component<any, any> {
   componentDidMount() {
     const userFromLocalStorage = store('user');
@@ -15,9 +13,7 @@ class Home extends Component<any, any> {
   render() {
     return (
       <Wrapper>
-        <Game />
-        <Chat />
-        <button>Back</button>
+        <RoomList />
       </Wrapper>
     );
   }
