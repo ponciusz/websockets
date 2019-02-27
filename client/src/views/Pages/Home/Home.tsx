@@ -3,17 +3,33 @@ import { emit } from '../../../actions/websockets';
 import store from 'store2';
 import { connect } from 'react-redux';
 import Wrapper from './Home.styles';
-import RoomList from '../../../components/Sidebar/RoomList/RoomList';
-class Home extends Component<any, any> {
+interface HomeProps {
+  history: any;
+}
+class Home extends Component<HomeProps> {
+  // constuctor() {
+  //   this.createPage = this.createPage.bind(this);
+  //   this.joinPage = this.joinPage.bind(this);
+  // }
   componentDidMount() {
     const userFromLocalStorage = store('user');
     emit('USER_JOINED', userFromLocalStorage.name);
   }
 
+  // createPage() {
+  //   const path = '/Create';
+  //   this.props.history.push(path);
+  // }
+  // joinPage() {
+  //   const path = '/Join';
+  //   this.props.history.push(path);
+  // }
+
   render() {
     return (
       <Wrapper>
-        <RoomList />
+        <button>Create</button>
+        <button>Join</button>
       </Wrapper>
     );
   }
