@@ -23,24 +23,21 @@ const Chat = props => {
   };
 
   return (
-    <Flex>
-      <Box width={1}>
-        <Styled.Wrapper>
-          <Styled.ChatBox>
-            <ul>{chatBoard()}</ul>
-          </Styled.ChatBox>
-          <form onSubmit={sendMessage}>
-            <input
-              value={input}
-              onChange={e => {
-                updateInput(e.target.value);
-              }}
-            />
-            <button type="submit">Send</button>
-          </form>
-        </Styled.Wrapper>
-      </Box>
-    </Flex>
+    <Styled.Wrapper>
+      <Styled.ChatBox>
+        <ul>{chatBoard()}</ul>
+      </Styled.ChatBox>
+      <Styled.Form onSubmit={sendMessage}>
+        <Styled.Input
+          value={input}
+          placeholder="Type in a message here..."
+          onChange={e => {
+            updateInput(e.target.value);
+          }}
+        />
+        <button type="submit">Send</button>
+      </Styled.Form>
+    </Styled.Wrapper>
   );
 };
 

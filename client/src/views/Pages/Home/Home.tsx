@@ -2,35 +2,45 @@ import React, { Component } from 'react';
 import { emit } from '../../../actions/websockets';
 import store from 'store2';
 import { connect } from 'react-redux';
-
-import Sidebar from '../../../components/Sidebar/Sidebar';
-import Chat from '../../../components/Chat/Chat';
-import { Flex, Box } from '@rebass/grid';
-import { Route, Switch } from 'react-router-dom';
-import './Home.css';
-import Game from '../Game';
-
-class Home extends Component<any, any> {
+import Wrapper from './Home.styles';
+import { Switch, Route } from 'react-router';
+import Game from '../../../components/Game';
+import RoomList from '../../../components/Sidebar/RoomList';
+import MainMenu from '../../../components/MainMenu';
+interface HomeProps {
+  history: any;
+}
+class Home extends Component<HomeProps> {
+  // constuctor() {
+  //   this.createPage = this.createPage.bind(this);
+  //   this.joinPage = this.joinPage.bind(this);
+  // }
   componentDidMount() {
     const userFromLocalStorage = store('user');
     emit('USER_JOINED', userFromLocalStorage.name);
   }
 
+  // createPage() {
+  //   const path = '/Create';
+  //   this.props.history.push(path);
+  // }
+  // joinPage() {
+  //   const path = '/Join';
+  //   this.props.history.push(path);
+  // }
+
   render() {
     return (
-      <Flex>
-        <Box width={1}>
-          <div>
-            <Switch>
-              <Route path="/game/:gameID" component={Game} />
-            </Switch>
-          </div>
-          <Chat />
-        </Box>
-        <Sidebar />
-      </Flex>
+      <Switch>
+        <Route path="/" exact component={MainMenu} />
+        <Route path="/game" exact component={RoomList} />
+        <Route path="/game/:gameID" component={Game} />
+      </Switch>
     );
   }
+}
+
+{
 }
 
 // CONNECT PROPS AND DISPATCHERS

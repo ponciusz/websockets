@@ -6,17 +6,6 @@ import history from '../../../history';
 import { connect } from 'react-redux';
 const uuidv1 = require('uuid/v1');
 
-const rooms = [
-  'Room1',
-  'Room2',
-  'Room3',
-  'Room4',
-  'Room5',
-  'Room6',
-  'Room7',
-  'Room8',
-  'Room9',
-];
 class RoomList extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -29,15 +18,20 @@ class RoomList extends Component<any, any> {
     return Object.keys(open).map((key, index) => {
       return (
         <li key={index}>
-          {open[key].createdBy}
-          <button
-            title={key}
-            onClick={() => {
-              history.push(`/game/${key}`);
-            }}
-          >
-            Join
-          </button>
+          <Flex>
+            <Box width={5 / 6}> {open[key].createdBy}</Box>
+            <Box width={1 / 6}>2/4</Box>
+            <Box width={1 / 6} mx="auto">
+              <button
+                title={key}
+                onClick={() => {
+                  history.push(`/game/${key}`);
+                }}
+              >
+                Join
+              </button>
+            </Box>
+          </Flex>
         </li>
       );
     });
@@ -56,7 +50,11 @@ class RoomList extends Component<any, any> {
         <Flex>
           <Box width={1 / 1}>
             <Styled.RoomListTitle>
-              Rooms <button onClick={this.createGame}>+</button>
+              <Flex>
+                <Box width={5 / 6}>Rooms</Box>
+                <Box width={1 / 6}>Players</Box>
+                <Box width={1 / 6} />
+              </Flex>
             </Styled.RoomListTitle>
             <Styled.UserList>{this.renderRooms()}</Styled.UserList>
           </Box>
