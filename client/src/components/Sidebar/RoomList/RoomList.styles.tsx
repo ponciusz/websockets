@@ -28,6 +28,7 @@ const UserList = styled.ul`
 `;
 const RoomListWrapper = styled.div`
   box-shadow: 0 0 0 1px #d4d4d4;
+  width: 100%;
   ${UserList} {
     height: 400px;
   }

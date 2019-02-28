@@ -6,6 +6,22 @@ import history from '../../../history';
 import { connect } from 'react-redux';
 const uuidv1 = require('uuid/v1');
 
+const tempOpenGames = {
+  myGame: {
+    players: 2,
+    createdBy: 'Random',
+  },
+
+  myGame2: {
+    players: 1,
+    createdBy: 'Claudiu',
+  },
+  myGame3: {
+    players: 1,
+    createdBy: 'Kamil',
+  },
+};
+
 class RoomList extends Component<any, any> {
   constructor(props) {
     super(props);
@@ -15,12 +31,13 @@ class RoomList extends Component<any, any> {
     if (!open) {
       return;
     }
-    return Object.keys(open).map((key, index) => {
+    return Object.keys(tempOpenGames).map((key, index) => {
+      const { createdBy, players } = tempOpenGames[key];
       return (
         <li key={index}>
           <Flex>
-            <Box width={5 / 6}> {open[key].createdBy}</Box>
-            <Box width={1 / 6}>2/4</Box>
+            <Box width={5 / 6}> {createdBy}</Box>
+            <Box width={1 / 6}>{players}/4</Box>
             <Box width={1 / 6} mx="auto">
               <button
                 title={key}

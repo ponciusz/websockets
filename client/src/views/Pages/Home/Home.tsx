@@ -4,8 +4,8 @@ import store from 'store2';
 import { connect } from 'react-redux';
 import Wrapper from './Home.styles';
 import { Switch, Route } from 'react-router';
-import Game from '../../../components/Game';
-import RoomList from '../../../components/Sidebar/RoomList';
+import Create from '../../../components/Create';
+import Join from '../../../components/Join';
 import MainMenu from '../../../components/MainMenu';
 interface HomeProps {
   history: any;
@@ -20,21 +20,12 @@ class Home extends Component<HomeProps> {
     emit('USER_JOINED', userFromLocalStorage.name);
   }
 
-  // createPage() {
-  //   const path = '/Create';
-  //   this.props.history.push(path);
-  // }
-  // joinPage() {
-  //   const path = '/Join';
-  //   this.props.history.push(path);
-  // }
-
   render() {
     return (
       <Switch>
         <Route path="/" exact component={MainMenu} />
-        <Route path="/game" exact component={RoomList} />
-        <Route path="/game/:gameID" component={Game} />
+        <Route path="/game" exact component={Join} />
+        <Route path="/game/:gameID" component={Create} />
       </Switch>
     );
   }
