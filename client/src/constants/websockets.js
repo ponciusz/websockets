@@ -10,4 +10,4 @@ export const socketActionTypes = [
   return accum;
 }, {});
 
-export const uri = 'http://192.168.1.59:3003';
+export const uri = 'http://192.168.1.62:3003';
